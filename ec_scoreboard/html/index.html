@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC_Scoreboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="scoreboard-app" id="scoreboard-app" style="display: none;">
+
+        <header>
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <div class="brand-text">
+                    <h1 id="server-name"></h1>
+                    <span><span data-locale="ui_players">Players</span> <b id="total-players-count">0/0</b></span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="btn-pill" id="btn-toggle-mode" type="button">
+                    <i class="fas fa-table-columns" id="mode-icon"></i>
+                    <span id="mode-text" data-locale="ui_compact">Compact</span>
+                </button>
+                <button class="btn-close" id="btn-close" type="button" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="filter-group" id="tabs-nav">
+                <button class="filter-btn active" data-tab="players" type="button">
+                    <i class="fas fa-user-friends"></i> <span data-locale="ui_players">Players</span>
+                </button>
+                <button class="filter-btn" data-tab="jobs" type="button">
+                    <i class="fas fa-briefcase"></i> <span data-locale="ui_jobs">Jobs</span>
+                </button>
+                <button class="filter-btn" data-tab="heists" type="button">
+                    <i class="fas fa-vault"></i> <span data-locale="ui_heists">Heists</span>
+                </button>
+            </div>
+
+            <div class="search-bar" id="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search players..." autocomplete="off">
+                <span id="search-count-text">0</span>
+            </div>
+        </div>
+
+        <main class="content">
+            <div id="pane-players" class="page active">
+                <div class="players-grid" id="players-list"></div>
+            </div>
+
+            <div id="pane-jobs" class="page">
+                <div class="list-container cols" id="jobs-list"></div>
+            </div>
+
+            <div id="pane-heists" class="page">
+                <div class="list-container cols" id="heists-list"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-keys">
+                <span class="key-hint"><kbd>ESC</kbd> <span data-locale="ui_close">Close</span></span>
+                <span class="key-hint"><kbd>TAB</kbd> <span data-locale="ui_toggle">Toggle Mode</span></span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
