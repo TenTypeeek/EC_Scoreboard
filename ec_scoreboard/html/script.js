@@ -7,6 +7,7 @@ function post(endpoint, data) {
 }
 
 let state = { serverName: '', maxPlayers: 0, playerCount: 0, showPing: true, players: [], jobs: [], heists: [] };
+let logoEnabled = false;
 let currentLocales = {};
 let activeTab = 'players';
 const searches = { players: '', jobs: '', heists: '' };
@@ -17,13 +18,13 @@ const SEARCH_PLACEHOLDERS = {
 };
 let isOpen = false;
 
-// Pinned jobs are stored on the player's client by the Lua side (resource KVP) and sent on open.
 let pinnedJobs = new Set();
 
 const $ = (id) => document.getElementById(id);
 const app = $('scoreboard-app');
 const searchInput = $('search-input');
 const searchCount = $('search-count-text');
+const brandEl = $('brand-icon');
 
 function esc(value) {
     return String(value ?? '').replace(/[&<>"']/g, (c) => (
@@ -235,8 +236,12 @@ function switchTab(tab) {
 
 function updateModeButton() {
     const compact = document.body.classList.contains('compact');
-    $('mode-icon').className = compact ? 'fas fa-expand' : 'fas fa-table-columns';
-    $('mode-text').textContent = compact ? _L('ui_full', 'Full') : _L('ui_compact', 'Compact');
+    $('mode-icon').className = compact ? 'fa-solid fa-maximize' : 'fa-solid fa-minimize';
+    $('mode-tooltip').textContent = compact ? _L('ui_full', 'Open big mode') : _L('ui_compact', 'Open small mode');
+}
+
+function updateLogoButton() {
+    brandEl.classList.toggle('show', logoEnabled);
 }
 
 function toggleMode() {
@@ -299,6 +304,10 @@ function applyData(data) {
     if (typeof data.compact === 'boolean') {
         document.body.classList.toggle('compact', data.compact);
     }
+    if (typeof data.logoEnabled === 'boolean') {
+        logoEnabled = data.logoEnabled;
+    }
+    updateLogoButton();
     translateDOM();
     renderAll();
 }

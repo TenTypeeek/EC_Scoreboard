@@ -16,8 +16,8 @@
 
         <header>
             <div class="brand">
-                <div class="brand-icon">
-                    <i class="fas fa-tree"></i>
+                <div class="brand-icon" id="brand-icon">
+                    <img id="brand-logo" src="img/logo.png" alt="" draggable="false">
                 </div>
                 <div class="brand-text">
                     <h1 id="server-name"></h1>
@@ -26,10 +26,12 @@
             </div>
 
             <div class="header-actions">
-                <button class="btn-pill" id="btn-toggle-mode" type="button">
-                    <i class="fas fa-table-columns" id="mode-icon"></i>
-                    <span id="mode-text" data-locale="ui_compact">Compact</span>
-                </button>
+                <div class="tooltip-wrap">
+                    <button class="btn-icon" id="btn-toggle-mode" type="button" aria-label="Toggle mode">
+                        <i class="fa-solid fa-maximize" id="mode-icon"></i>
+                    </button>
+                    <span class="tooltip" id="mode-tooltip" data-locale="ui_compact">Compact</span>
+                </div>
                 <button class="btn-close" id="btn-close" type="button" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>

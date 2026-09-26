@@ -1,12 +1,9 @@
 local ESX = exports['es_extended']:getSharedObject()
 
-local jobsDb = {}          -- [jobName] = label (from database)
+local jobsDb = {}
 local cache = { data = nil, time = 0 }
 local CACHE_MS = 1000
 
--- ─────────────────────────────────────────────────────────────
--- Lookups built from the config
--- ─────────────────────────────────────────────────────────────
 local function toSet(list)
     local set = {}
     for _, v in ipairs(list or {}) do set[v] = true end
@@ -25,9 +22,6 @@ for _, cat in ipairs(Config.JobCategories) do
     end
 end
 
--- ─────────────────────────────────────────────────────────────
--- Database
--- ─────────────────────────────────────────────────────────────
 local function loadJobs()
     if not Config.JobsTable:match('^[%w_]+$') then
         print('^1[ec_scoreboard] Config.JobsTable contains invalid characters.^0')
@@ -61,9 +55,6 @@ MySQL.ready(function()
     end
 end)
 
--- ─────────────────────────────────────────────────────────────
--- Build payload
--- ─────────────────────────────────────────────────────────────
 local function getMaxPlayers()
     if Config.MaxPlayers and Config.MaxPlayers > 0 then return Config.MaxPlayers end
     return GetConvarInt('sv_maxclients', 48)
@@ -77,7 +68,6 @@ local function buildData()
         local job = xPlayer.job or {}
         local jobName = job.name
 
-        -- players list
         local name = GetPlayerName(src) or ('ID ' .. src)
         if Config.UseCharacterNames then
             local ok, charName = pcall(function() return xPlayer.getName() end)
@@ -98,7 +88,6 @@ local function buildData()
             tag = tag,
         }
 
-        -- job counts
         if jobName then
             local counted = true
             if Config.CountOnlyOnDuty and job.onDuty == false then counted = false end
@@ -113,7 +102,6 @@ local function buildData()
 
     table.sort(players, function(a, b) return a.id < b.id end)
 
-    -- jobs list
     local jobs = {}
     for jobName, dbLabel in pairs(jobsDb) do
         local count = counts[jobName] or 0
@@ -134,7 +122,6 @@ local function buildData()
         end
     end
 
-    -- heists
     local heists = {}
     for _, heist in ipairs(Config.Heists) do
         heists[#heists + 1] = {
@@ -167,8 +154,6 @@ local function getData()
     return cache.data
 end
 
--- Plain net events (instead of ESX callbacks) so restarting this resource never leaves
--- dead function references inside es_extended.
 local lastRequest = {}
 
 RegisterNetEvent('ec_scoreboard:requestData', function()

@@ -1,7 +1,6 @@
 local isOpen = false
 local pendingSince = nil
 
--- Saved locally on the player's own FiveM client (survives reconnects and restarts)
 local KVP_PINNED = 'pinned_jobs'
 local KVP_MODE = 'display_mode'
 
@@ -24,7 +23,6 @@ end
 
 local function openScoreboard()
     if isOpen then return end
-    -- ignore repeat presses while waiting for the server (times out after 3s)
     if pendingSince and (GetGameTimer() - pendingSince) < 3000 then return end
     pendingSince = GetGameTimer()
     TriggerServerEvent('ec_scoreboard:requestData')
@@ -37,7 +35,6 @@ local function closeScoreboard()
     SendNUIMessage({ action = 'close' })
 end
 
--- Server answers both the first request (open) and the refresh requests (update)
 RegisterNetEvent('ec_scoreboard:receiveData', function(data)
     if type(data) ~= 'table' then return end
 
@@ -47,6 +44,7 @@ RegisterNetEvent('ec_scoreboard:receiveData', function(data)
 
         data.pinned = getPinned()
         data.compact = getCompact()
+        data.logoEnabled = Config.ShowLogo
 
         isOpen = true
         SetNuiFocus(true, true)
@@ -56,9 +54,6 @@ RegisterNetEvent('ec_scoreboard:receiveData', function(data)
     end
 end)
 
--- ─────────────────────────────────────────────────────────────
--- Input
--- ─────────────────────────────────────────────────────────────
 RegisterCommand(Config.Command, function()
     if isOpen then closeScoreboard() else openScoreboard() end
 end, false)
@@ -69,14 +64,11 @@ if Config.BlockWeaponWheel then
     CreateThread(function()
         while true do
             Wait(0)
-            DisableControlAction(0, 37, true) -- INPUT_SELECT_WEAPON (weapon wheel)
+            DisableControlAction(0, 37, true)
         end
     end)
 end
 
--- ─────────────────────────────────────────────────────────────
--- Live refresh while open
--- ─────────────────────────────────────────────────────────────
 CreateThread(function()
     while true do
         Wait(Config.RefreshInterval)
@@ -86,9 +78,6 @@ CreateThread(function()
     end
 end)
 
--- ─────────────────────────────────────────────────────────────
--- NUI callbacks
--- ─────────────────────────────────────────────────────────────
 RegisterNUICallback('close', function(_, cb)
     if isOpen then
         isOpen = false

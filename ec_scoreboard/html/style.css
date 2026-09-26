@@ -115,12 +115,22 @@ header {
     background-color: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     color: var(--text-primary);
     flex-shrink: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.brand-icon.show { display: flex; }
+
+.brand-icon img#brand-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .brand-text { overflow: hidden; }
@@ -178,6 +188,60 @@ header {
 }
 
 .btn-pill:active { transform: scale(0.97); }
+
+.tooltip-wrap {
+    position: relative;
+    display: flex;
+}
+
+.tooltip {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: #000000;
+    color: var(--text-primary);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color-strong);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.tooltip-wrap:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-icon:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-icon:active { transform: scale(0.95); }
 
 .btn-close {
     width: 36px;

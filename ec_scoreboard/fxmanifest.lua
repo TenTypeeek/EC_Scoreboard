@@ -2,9 +2,9 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-name 'ec_scoreboard'
-description 'ESX scoreboard with players, jobs and heists'
-version '1.0.0'
+author 'TenTypeeek & 100Kary'
+description '[Eclipse Development] Scoreboard'
+version '1.0.1'
 
 dependencies {
     'es_extended',
@@ -25,5 +25,6 @@ ui_page 'html/index.html'
 files {
     'html/index.html',
     'html/style.css',
-    'html/script.js'
+    'html/script.js',
+    'html/img/logo.png'
 }
