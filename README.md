@@ -73,6 +73,7 @@ Your players can now press **TAB** or type **/scoreboard** to see who is online!
 <div align="center">
 
 ### 🌐 Created by Eclipse Development
+## 🤖 Made with AI
 
 Need help or custom FiveM scripts?  
 [**Join our Discord**](https://discord.gg/5D3wdy4dQH)
