@@ -138,7 +138,7 @@ local function buildData()
         maxPlayers = getMaxPlayers(),
         playerCount = #GetPlayers(),
         showPing = Config.ShowPing,
-        locales = Config.Locale,
+        locales = Locales,
         players = players,
         jobs = jobs,
         heists = heists,

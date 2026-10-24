@@ -58,7 +58,7 @@ RegisterCommand(Config.Command, function()
     if isOpen then closeScoreboard() else openScoreboard() end
 end, false)
 
-RegisterKeyMapping(Config.Command, Config.OpenKeyDescription, 'keyboard', Config.OpenKey)
+RegisterKeyMapping(Config.Command, _L('keybind_description'), 'keyboard', Config.OpenKey)
 
 if Config.BlockWeaponWheel then
     CreateThread(function()

@@ -195,7 +195,7 @@ function renderHeists() {
         const status = heist.enoughCops
             ? `<span class="tag tag-active"><i class="fas fa-check"></i> ${esc(_L('ui_cops_enough', 'Available'))}</span>`
             : `<span class="tag tag-inactive"><i class="fas fa-xmark"></i> ${esc(_L('ui_cops_not_enough', 'Not enough cops'))}</span>`;
-        const requires = _L('ui_requires_cops', 'Requires {n} police').replace('{n}', Number(heist.requiredCops) || 0);
+        const requires = _L('ui_requires_cops', 'Requires %s police').replace('%s', Number(heist.requiredCops) || 0);
         return `
         <div class="list-item single">
             <div class="item-left">

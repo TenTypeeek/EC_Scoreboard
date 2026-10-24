@@ -6,7 +6,6 @@ Config.MaxPlayers = 64
 
 Config.Command = 'scoreboard'
 Config.OpenKey = 'TAB'
-Config.OpenKeyDescription = 'Open scoreboard'
 
 Config.BlockWeaponWheel = false
 
@@ -70,24 +69,5 @@ Config.AdminGroups = {
     mod = { label = 'Moderator', color = '#60a5fa' },
 }
 
-Config.Locale = {
-    ui_players          = 'Players',
-    ui_jobs             = 'Jobs',
-    ui_heists           = 'Heists',
-    ui_compact          = 'Compact',
-    ui_full             = 'Full',
-    ui_close            = 'Close',
-    ui_toggle           = 'Toggle Mode',
-    ui_search_players   = 'Search players...',
-    ui_search_jobs      = 'Search jobs...',
-    ui_search_heists    = 'Search heists...',
-    ui_no_players       = 'No players found',
-    ui_no_jobs          = 'No jobs found',
-    ui_no_heists        = 'No heists found',
-    ui_online           = 'online',
-    ui_pin              = 'Pin Job',
-    ui_unpin            = 'Unpin Job',
-    ui_cops_enough      = 'Available',
-    ui_cops_not_enough  = 'Not enough cops',
-    ui_requires_cops    = 'Requires {n} police',
-}
+-- Language file from locales/ to use: 'en', 'cs' or 'es'.
+Config.Locale = 'en'

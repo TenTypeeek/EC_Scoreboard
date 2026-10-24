@@ -1,0 +1,22 @@
+{
+    "ui_players": "Hráči",
+    "ui_jobs": "Práce",
+    "ui_heists": "Loupeže",
+    "ui_compact": "Kompaktní",
+    "ui_full": "Plný",
+    "ui_close": "Zavřít",
+    "ui_toggle": "Přepnout režim",
+    "ui_search_players": "Hledat hráče...",
+    "ui_search_jobs": "Hledat práce...",
+    "ui_search_heists": "Hledat loupeže...",
+    "ui_no_players": "Nebyli nalezeni žádní hráči",
+    "ui_no_jobs": "Nebyly nalezeny žádné práce",
+    "ui_no_heists": "Nebyly nalezeny žádné loupeže",
+    "ui_online": "online",
+    "ui_pin": "Připnout práci",
+    "ui_unpin": "Odepnout práci",
+    "ui_cops_enough": "Dostupné",
+    "ui_cops_not_enough": "Málo policistů",
+    "ui_requires_cops": "Vyžaduje %s policistů",
+    "keybind_description": "Otevřít scoreboard"
+}

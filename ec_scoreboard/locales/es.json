@@ -1,0 +1,22 @@
+{
+    "ui_players": "Jugadores",
+    "ui_jobs": "Trabajos",
+    "ui_heists": "Atracos",
+    "ui_compact": "Compacto",
+    "ui_full": "Completo",
+    "ui_close": "Cerrar",
+    "ui_toggle": "Cambiar modo",
+    "ui_search_players": "Buscar jugadores...",
+    "ui_search_jobs": "Buscar trabajos...",
+    "ui_search_heists": "Buscar atracos...",
+    "ui_no_players": "No se encontraron jugadores",
+    "ui_no_jobs": "No se encontraron trabajos",
+    "ui_no_heists": "No se encontraron atracos",
+    "ui_online": "en línea",
+    "ui_pin": "Fijar trabajo",
+    "ui_unpin": "Desfijar trabajo",
+    "ui_cops_enough": "Disponible",
+    "ui_cops_not_enough": "Faltan policías",
+    "ui_requires_cops": "Requiere %s policías",
+    "keybind_description": "Abrir marcador"
+}
